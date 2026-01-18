@@ -1,12 +1,15 @@
 package com.docencia.tasks.adapters.out.persistence;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import com.docencia.tasks.adapters.mapper.TaskMapper;
+import com.docencia.tasks.adapters.out.persistence.interfaces.ITaskPersistenceAdapter;
+import com.docencia.tasks.adapters.out.persistence.jpa.TaskJpaEntity;
+import com.docencia.tasks.adapters.out.persistence.repository.TaskRepositoryRepository;
 import com.docencia.tasks.domain.model.Task;
-
-import java.util.List;
-import java.util.Optional;
 
 @Component
 public class TaskPersistenceAdapter implements ITaskPersistenceAdapter {

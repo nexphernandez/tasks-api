@@ -1,4 +1,4 @@
-package com.docencia.tasks.business;
+package com.docencia.tasks.business.interfaces;
 
 import java.util.List;
 import java.util.Optional;

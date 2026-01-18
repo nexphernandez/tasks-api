@@ -1,4 +1,4 @@
-package com.docencia.tasks.adapters.out.persistence.security;
+package com.docencia.tasks.adapters.out.persistence.jpa;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,7 +27,7 @@ public class UserJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "userName",nullable=false)
+    @Column(name = "userName",nullable=false,unique=true)
     private String userName;
 
     @Column(name = "password",nullable=false)

@@ -4,7 +4,7 @@ import org.mapstruct.*;
 
 import com.docencia.tasks.adapters.in.api.TaskRequest;
 import com.docencia.tasks.adapters.in.api.TaskResponse;
-import com.docencia.tasks.adapters.out.persistence.TaskJpaEntity;
+import com.docencia.tasks.adapters.out.persistence.jpa.TaskJpaEntity;
 import com.docencia.tasks.domain.model.Task;
 
 @Mapper(componentModel = "spring")

@@ -1,4 +1,4 @@
-package com.docencia.tasks.adapters.out.persistence.security;
+package com.docencia.tasks.adapters.out.persistence.jpa;
 
 import java.util.Objects;
 import java.util.Set;
@@ -24,7 +24,7 @@ public class RolJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="rol",nullable=false)
+    @Column(name="rol",nullable=false,unique=true)
     private String rol;
 
     @ManyToMany

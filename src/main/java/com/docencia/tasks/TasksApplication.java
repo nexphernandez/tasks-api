@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.docencia.tasks.adapters.out.persistence.security.RolJpaEntity;
-import com.docencia.tasks.adapters.out.persistence.security.RolJpaRepository;
-import com.docencia.tasks.adapters.out.persistence.security.UserJpaEntity;
-import com.docencia.tasks.adapters.out.persistence.security.UserJpaRepository;
+import com.docencia.tasks.adapters.out.persistence.jpa.RolJpaEntity;
+import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
+import com.docencia.tasks.adapters.out.persistence.repository.RolJpaRepository;
+import com.docencia.tasks.adapters.out.persistence.repository.UserJpaRepository;
 
 @SpringBootApplication
 public class TasksApplication {
@@ -19,34 +19,31 @@ public class TasksApplication {
     }
 
     @Bean
-    CommandLineRunner initAdmin(RolJpaRepository rolRepo, UserJpaRepository userRepo) {
+    CommandLineRunner initRolesAndUsers(RolJpaRepository rolRepo, UserJpaRepository userRepo) {
         return args -> {
             RolJpaEntity adminRole = rolRepo.findByRol("ADMIN")
                     .orElseGet(() -> rolRepo.save(new RolJpaEntity(null, "ADMIN")));
 
-            // Crear rol USER si no existe
             RolJpaEntity userRole = rolRepo.findByRol("USER")
                     .orElseGet(() -> rolRepo.save(new RolJpaEntity(null, "USER")));
 
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-            // Crear usuario admin si no existe
-            if (userRepo.findByUserName("admin").isEmpty()) {
+            userRepo.findByUserName("admin").orElseGet(() -> {
                 UserJpaEntity admin = new UserJpaEntity();
                 admin.setUserName("admin");
                 admin.setPassword(encoder.encode("admin123"));
                 admin.getRoles().add(adminRole);
-                userRepo.save(admin);
-            }
+                return userRepo.save(admin);
+            });
 
-            // Crear usuario normal si no existe
-            if (userRepo.findByUserName("user").isEmpty()) {
+            userRepo.findByUserName("user").orElseGet(() -> {
                 UserJpaEntity user = new UserJpaEntity();
                 user.setUserName("user");
                 user.setPassword(encoder.encode("user123"));
                 user.getRoles().add(userRole);
-                userRepo.save(user);
-            }
+                return userRepo.save(user);
+            });
         };
     }
 }

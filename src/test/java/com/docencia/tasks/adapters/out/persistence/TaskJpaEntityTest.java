@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import com.docencia.tasks.adapters.out.persistence.jpa.TaskJpaEntity;
+
 class TaskJpaEntityTest {
 
     private static final String TITULO = "Soy un titulo";

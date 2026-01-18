@@ -25,7 +25,6 @@ public class AuthController {
         this.jwtService = jwtService;
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
         try {

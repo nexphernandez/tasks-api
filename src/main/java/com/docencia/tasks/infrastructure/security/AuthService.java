@@ -20,7 +20,6 @@ public class AuthService {
         if (!new BCryptPasswordEncoder().matches(password, user.getPassword())) {
             throw new RuntimeException("Invalid credentials");
         }
-        // Genera JWT con roles
         return jwtService.generateToken(user.getUsername(), user.getAuthorities());
     }
 }

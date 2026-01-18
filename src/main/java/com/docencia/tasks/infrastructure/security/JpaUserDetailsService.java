@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.docencia.tasks.adapters.out.persistence.security.UserJpaEntity;
-import com.docencia.tasks.adapters.out.persistence.security.UserJpaRepository;
+import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
+import com.docencia.tasks.adapters.out.persistence.repository.UserJpaRepository;
 
 @Service
 public class JpaUserDetailsService implements UserDetailsService {

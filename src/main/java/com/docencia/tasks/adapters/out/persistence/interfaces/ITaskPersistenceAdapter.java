@@ -1,4 +1,4 @@
-package com.docencia.tasks.adapters.out.persistence;
+package com.docencia.tasks.adapters.out.persistence.interfaces;
 
 import java.util.List;
 import java.util.Optional;
