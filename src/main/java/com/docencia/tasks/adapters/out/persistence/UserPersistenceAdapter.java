@@ -38,8 +38,12 @@ public class UserPersistenceAdapter implements IUserPersistenceAdapter {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public boolean deleteById(Long id) {
+        if (id == null) {
+            return false;
+        }
         userJpa.deleteById(id);
+        return true;
         
     }
 

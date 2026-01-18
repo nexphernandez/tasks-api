@@ -1,4 +1,4 @@
-package com.docencia.tasks.adapters.out.persistence.security;
+package com.docencia.tasks.adapters.out.persistence.jpa;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-
-import com.docencia.tasks.adapters.out.persistence.jpa.RolJpaEntity;
-import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
 
 class UserJpaEntityTest {
 

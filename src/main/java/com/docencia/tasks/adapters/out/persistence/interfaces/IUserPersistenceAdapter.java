@@ -8,7 +8,7 @@ import com.docencia.tasks.domain.model.User;
 public interface IUserPersistenceAdapter {
     List<User> getAll();
     Optional<User> getById(Long id);
-    void deleteById(Long id);
+    boolean deleteById(Long id);
     User save(User user,String rol);
     User update(User user,String rol);
 }

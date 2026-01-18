@@ -1,11 +1,9 @@
-package com.docencia.tasks.adapters.out.persistence;
+package com.docencia.tasks.adapters.out.persistence.jpa;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-
-import com.docencia.tasks.adapters.out.persistence.jpa.TaskJpaEntity;
 
 class TaskJpaEntityTest {
 

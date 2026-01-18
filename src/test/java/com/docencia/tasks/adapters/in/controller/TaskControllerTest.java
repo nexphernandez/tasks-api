@@ -3,6 +3,7 @@ package com.docencia.tasks.adapters.in.controller;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +11,9 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.docencia.tasks.adapters.in.api.TaskRequest;
@@ -21,10 +24,17 @@ import com.docencia.tasks.domain.model.Task;
 
 class TaskControllerTest {
   Task task = null;
-
+  ITaskService service;
+  TaskMapper mapper;
+  TaskController controller;
+  
   @BeforeEach
   void setUp() {
-    task = new Task(1L, "a", "b", false);
+      task = new Task(1L, "a", "b", false);
+  
+      service = mock(ITaskService.class);
+      mapper = mock(TaskMapper.class);
+      controller = new TaskController(service, mapper);
   }
 
   @Test
@@ -99,5 +109,63 @@ class TaskControllerTest {
     TaskController controller = new TaskController(service, mapper);
     ResponseEntity<Void> respuesta = controller.delete(1l);
   }
+
+  @Test
+    void update_existingTask_shouldReturnOk() {
+        Long taskId = 1L;
+        TaskRequest request = new TaskRequest();
+        request.setTitle("New Title");
+        request.setDescription("New Desc");
+        request.setCompleted(true);
+
+        Task patch = new Task();
+        patch.setTitle(request.getTitle());
+        patch.setDescription(request.getDescription());
+        patch.setCompleted(true);
+
+        Task updatedTask = new Task();
+        updatedTask.setId(taskId);
+        updatedTask.setTitle("New Title");
+        updatedTask.setDescription("New Desc");
+        updatedTask.setCompleted(true);
+
+        TaskResponse response = new TaskResponse();
+        response.setId(taskId);
+        response.setTitle("New Title");
+        response.setDescription("New Desc");
+        response.setCompleted(true);
+
+        when(service.update(taskId, patch)).thenReturn(Optional.of(updatedTask));
+        when(mapper.toResponse(updatedTask)).thenReturn(response);
+
+        ResponseEntity<TaskResponse> result = controller.update(taskId, request);
+
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(result.getBody()).isEqualTo(response);
+
+        verify(service).update(taskId, patch);
+        verify(mapper).toResponse(updatedTask);
+    }
+
+    @Test
+    void update_nonExistingTask_shouldReturnNotFound() {
+        Long taskId = 1L;
+        TaskRequest request = new TaskRequest();
+        request.setTitle("New Title");
+
+        Task patch = new Task();
+        patch.setTitle(request.getTitle());
+        patch.setCompleted(false); 
+
+        when(service.update(taskId, patch)).thenReturn(Optional.empty());
+
+        ResponseEntity<TaskResponse> result = controller.update(taskId, request);
+
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody()).isNull();
+
+        verify(service).update(taskId, patch);
+        verifyNoInteractions(mapper);
+    }
 
 }

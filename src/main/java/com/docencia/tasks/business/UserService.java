@@ -45,7 +45,7 @@ public class UserService implements IUserService{
 
     @Override
     public boolean delete(Long id) {
-        if (repo.getById(id) == null) return false;
+        if (repo.getById(id).isEmpty()) return false;
             repo.deleteById(id);
         return true;
     }
