@@ -9,19 +9,28 @@ import com.docencia.tasks.adapters.out.persistence.interfaces.IUserPersistenceAd
 import com.docencia.tasks.business.interfaces.IUserService;
 import com.docencia.tasks.domain.model.User;
 
+/**
+ * @author nexphernandez
+ * @version 1.0.0 clase del servicio de user
+ */
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
     private final IUserPersistenceAdapter repo;
 
+    /**
+     * Constructor para inicializar
+     *
+     * @param repo interfaz de percistencia de user
+     */
     public UserService(IUserPersistenceAdapter repo) {
         this.repo = repo;
     }
 
     @Override
-    public User create(User user,String rol) {
+    public User create(User user, String rol) {
         user.setId(null);
-        return repo.save(user, rol);    
+        return repo.save(user, rol);
     }
 
     @Override
@@ -35,18 +44,24 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public Optional<User> update(Long id, User patch,String rol) {
+    public Optional<User> update(Long id, User patch, String rol) {
         return repo.getById(id).map(existing -> {
-            if (patch.getUserName() != null) existing.setUserName(patch.getUserName());
-            if (patch.getPassword() != null) existing.setPassword(patch.getPassword());
-            return repo.save(existing,rol);
-          });
+            if (patch.getUserName() != null) {
+                existing.setUserName(patch.getUserName());
+            }
+            if (patch.getPassword() != null) {
+                existing.setPassword(patch.getPassword());
+            }
+            return repo.save(existing, rol);
+        });
     }
 
     @Override
     public boolean delete(Long id) {
-        if (repo.getById(id).isEmpty()) return false;
-            repo.deleteById(id);
+        if (repo.getById(id).isEmpty()) {
+            return false;
+        }
+        repo.deleteById(id);
         return true;
     }
 

@@ -12,7 +12,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.docencia.tasks.infrastructure.security.AuthService;
 import com.docencia.tasks.infrastructure.security.JwtService;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {

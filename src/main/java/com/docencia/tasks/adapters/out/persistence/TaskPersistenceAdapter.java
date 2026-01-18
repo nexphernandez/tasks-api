@@ -10,13 +10,21 @@ import com.docencia.tasks.adapters.out.persistence.interfaces.ITaskPersistenceAd
 import com.docencia.tasks.adapters.out.persistence.jpa.TaskJpaEntity;
 import com.docencia.tasks.adapters.out.persistence.repository.TaskRepositoryRepository;
 import com.docencia.tasks.domain.model.Task;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0 Clase persistence de task
+ */
 @Component
 public class TaskPersistenceAdapter implements ITaskPersistenceAdapter {
 
   private final TaskRepositoryRepository jpaRepo;
   private final TaskMapper mapper;
 
+  /**
+   * Constructor para inicializar la clase
+   * @param jpaRepo interfaz jpa de task
+   * @param mapper mapers de task
+   */
   public TaskPersistenceAdapter(TaskRepositoryRepository jpaRepo, TaskMapper mapper) {
     this.jpaRepo = jpaRepo;
     this.mapper = mapper;

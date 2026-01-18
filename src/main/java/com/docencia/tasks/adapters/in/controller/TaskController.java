@@ -22,7 +22,10 @@ import com.docencia.tasks.domain.model.Task;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @RestController
 @RequestMapping("/api/v1/tasks")
 @Tag(name = "Tasks API")

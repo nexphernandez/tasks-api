@@ -9,7 +9,10 @@ import com.docencia.tasks.adapters.in.api.UserRequest;
 import com.docencia.tasks.adapters.in.api.UserResponse;
 import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
 import com.docencia.tasks.domain.model.User;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @Mapper(componentModel = "spring")
 public interface UserMapper {
   // API <-> Domain

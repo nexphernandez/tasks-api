@@ -10,7 +10,10 @@ import com.docencia.tasks.adapters.out.persistence.jpa.RolJpaEntity;
 import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
 import com.docencia.tasks.adapters.out.persistence.repository.RolJpaRepository;
 import com.docencia.tasks.adapters.out.persistence.repository.UserJpaRepository;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @SpringBootApplication
 public class TasksApplication {
 
@@ -18,6 +21,12 @@ public class TasksApplication {
         SpringApplication.run(TasksApplication.class, args);
     }
 
+    /**
+     * Funcion para iniciar la app con usuarios y roles por defecto
+     * @param rolRepo interfaz jpa de rol
+     * @param userRepo interfaz jpa de user
+     * @return
+     */
     @Bean
     CommandLineRunner initRolesAndUsers(RolJpaRepository rolRepo, UserJpaRepository userRepo) {
         return args -> {

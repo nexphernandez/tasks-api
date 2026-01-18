@@ -1,19 +1,40 @@
 package com.docencia.tasks.domain.model;
 
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 public class User {
+
     private Long id;
     private String userName;
     private String password;
     private String rol;
-    
+
+    /**
+     * Constructor vacio
+     */
     public User() {
     }
-    
+
+    /**
+     * Consturctor con el identificador de la clase
+     *
+     * @param id identificador del usuario
+     */
     public User(Long id) {
         this.id = id;
     }
 
-    public User(Long id,String userName, String password, String rol) {
+    /**
+     * Constructor con los atributos de la clase
+     *
+     * @param id identificador del usuario
+     * @param userName nombre de usuario
+     * @param password contrasenia del usuario
+     * @param rol rol del usuario
+     */
+    public User(Long id, String userName, String password, String rol) {
         this.id = id;
         this.userName = userName;
         this.password = password;

@@ -14,13 +14,21 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
   private final JwtService jwtService;
   private final UserDetailsService userDetailsService;
 
+  /**
+   * Contructor para inicializar la clase
+   * @param jwtService inyeccion del servicio
+   * @param userDetailsService inyeccion de los detalles de usuario
+   */
   public JwtAuthenticationFilter(JwtService jwtService, UserDetailsService userDetailsService) {
     this.jwtService = jwtService;
     this.userDetailsService = userDetailsService;

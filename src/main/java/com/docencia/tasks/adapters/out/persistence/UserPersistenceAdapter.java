@@ -13,7 +13,10 @@ import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
 import com.docencia.tasks.adapters.out.persistence.repository.RolJpaRepository;
 import com.docencia.tasks.adapters.out.persistence.repository.UserJpaRepository;
 import com.docencia.tasks.domain.model.User;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0 Clase persistence de user
+ */
 @Component
 public class UserPersistenceAdapter implements IUserPersistenceAdapter {
 
@@ -21,6 +24,12 @@ public class UserPersistenceAdapter implements IUserPersistenceAdapter {
     private final RolJpaRepository rolJpa;
     private final UserMapper mapper;
 
+    /**
+     * Constructor para inicializar la clase
+     * @param userJpa interfaz jpa de user
+     * @param mapper mapers de user
+     * @param rolJpa interfaz jpa de rol
+     */
     public UserPersistenceAdapter(UserJpaRepository userJpa,UserMapper mapper,RolJpaRepository rolJpa) {
         this.userJpa = userJpa;
         this.mapper = mapper;

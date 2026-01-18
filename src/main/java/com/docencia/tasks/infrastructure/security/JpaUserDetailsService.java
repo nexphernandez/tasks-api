@@ -10,12 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
 import com.docencia.tasks.adapters.out.persistence.repository.UserJpaRepository;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @Service
 public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserJpaRepository userRepo;
-
+    /**
+     * Contructor para inicializar la clase
+     * @param userRepo  inyeccion de usuario respository
+     */
     public JpaUserDetailsService(UserJpaRepository userRepo) {
         this.userRepo = userRepo;
     }

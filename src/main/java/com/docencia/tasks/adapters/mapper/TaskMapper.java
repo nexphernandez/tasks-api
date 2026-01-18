@@ -6,7 +6,10 @@ import com.docencia.tasks.adapters.in.api.TaskRequest;
 import com.docencia.tasks.adapters.in.api.TaskResponse;
 import com.docencia.tasks.adapters.out.persistence.jpa.TaskJpaEntity;
 import com.docencia.tasks.domain.model.Task;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
 

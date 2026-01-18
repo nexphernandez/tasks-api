@@ -7,7 +7,10 @@ import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
-
+/**
+ * @author nexphernandez
+ * @version 1.0.0
+ */
 @Configuration
 public class OpenApiConfig {
 
