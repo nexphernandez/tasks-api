@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/api/v1/tasks")
 @Tag(name = "Tasks API")
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:4200"})
 public class TaskController {
 
   private final ITaskService service;
