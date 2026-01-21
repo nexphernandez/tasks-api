@@ -39,12 +39,12 @@ class UserJpaEntityTest {
     void jpaEntityGetsSetsTest(){
 
         jpaEntity.setId(ID_INICIAL);
-        jpaEntity.setUserName(USER_NAME);
+        jpaEntity.setUsername(USER_NAME);
         jpaEntity.setPassword(PASSWORD);
         jpaEntity.setRoles(ROLES);
 
         Assertions.assertEquals(ID_INICIAL, jpaEntity.getId());
-        Assertions.assertEquals(USER_NAME, jpaEntity.getUserName());
+        Assertions.assertEquals(USER_NAME, jpaEntity.getUsername());
         Assertions.assertEquals(PASSWORD, jpaEntity.getPassword());
         Assertions.assertEquals(ROLES, jpaEntity.getRoles());
     }

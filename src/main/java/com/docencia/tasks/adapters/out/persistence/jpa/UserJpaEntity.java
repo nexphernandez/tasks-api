@@ -27,8 +27,8 @@ public class UserJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "userName",nullable=false,unique=true)
-    private String userName;
+    @Column(name = "username",nullable=false,unique=true)
+    private String username;
 
     @Column(name = "password",nullable=false)
     private String password;
@@ -62,12 +62,12 @@ public class UserJpaEntity {
      * Constructor con los atributos del usuario
      *
      * @param id identificador del usuario
-     * @param userName nombre de usuario
+     * @param username nombre de usuario
      * @param password contraseña
      */
-    public UserJpaEntity(Long id, String userName, String password) {
+    public UserJpaEntity(Long id, String username, String password) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.roles = new HashSet<>();
     }
@@ -80,12 +80,12 @@ public class UserJpaEntity {
         this.id = id;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUsername() {
+        return this.username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

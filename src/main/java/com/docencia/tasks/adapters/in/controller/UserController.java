@@ -68,7 +68,7 @@ public class UserController {
     public ResponseEntity<UserResponse> update(@PathVariable Long id, @RequestBody UserRequest request, @RequestParam String rol) {
 
         User patch = new User();
-        patch.setUserName(request.getUserName());
+        patch.setUsername(request.getUsername());
         patch.setPassword(request.getPassword());
 
         return service.update(id, patch, rol)

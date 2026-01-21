@@ -4,7 +4,7 @@ package com.docencia.tasks.adapters.in.api;
  * @version 1.0.0
  */
 public class UserRequest {
-    private String userName;
+    private String username;
     private String password;
     
     /**
@@ -15,20 +15,20 @@ public class UserRequest {
     
     /**
      * Constructor con los atributos de la clase
-     * @param userName nombre de usuario
+     * @param username nombre de usuario
      * @param password contrasenia del usuario
      */
-    public UserRequest(String userName, String password) {
-        this.userName = userName;
+    public UserRequest(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

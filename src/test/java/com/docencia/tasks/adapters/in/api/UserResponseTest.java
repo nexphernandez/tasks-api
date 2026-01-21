@@ -22,7 +22,7 @@ class UserResponseTest {
     void constructorCompleto_shouldSetAllFields() {
         UserResponse ur = new UserResponse(1L, "user", "pass");
         assertThat(ur.getId()).isEqualTo(1L);
-        assertThat(ur.getUserName()).isEqualTo("user");
+        assertThat(ur.getUsername()).isEqualTo("user");
         assertThat(ur.getPassword()).isEqualTo("pass");
     }
 
@@ -30,11 +30,11 @@ class UserResponseTest {
     void settersAndGetters_shouldWork() {
         UserResponse ur = new UserResponse();
         ur.setId(10L);
-        ur.setUserName("john");
+        ur.setUsername("john");
         ur.setPassword("1234");
 
         assertThat(ur.getId()).isEqualTo(10L);
-        assertThat(ur.getUserName()).isEqualTo("john");
+        assertThat(ur.getUsername()).isEqualTo("john");
         assertThat(ur.getPassword()).isEqualTo("1234");
     }
 

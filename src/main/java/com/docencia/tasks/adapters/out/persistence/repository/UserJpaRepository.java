@@ -12,5 +12,5 @@ import com.docencia.tasks.adapters.out.persistence.jpa.UserJpaEntity;
  * Interfaz jpa de User
  */
 public interface UserJpaRepository extends JpaRepository<UserJpaEntity, Long>{
-    Optional<UserJpaEntity> findByUserName(String userName);
+    Optional<UserJpaEntity> findByUsername(String userName);
 }

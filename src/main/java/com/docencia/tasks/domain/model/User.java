@@ -7,7 +7,7 @@ package com.docencia.tasks.domain.model;
 public class User {
 
     private Long id;
-    private String userName;
+    private String username;
     private String password;
     private String rol;
 
@@ -30,23 +30,23 @@ public class User {
      * Constructor con los atributos de la clase
      *
      * @param id identificador del usuario
-     * @param userName nombre de usuario
+     * @param username nombre de usuario
      * @param password contrasenia del usuario
      * @param rol rol del usuario
      */
-    public User(Long id, String userName, String password, String rol) {
+    public User(Long id, String username, String password, String rol) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.rol = rol;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

@@ -70,7 +70,7 @@ public class UserPersistenceAdapter implements IUserPersistenceAdapter {
         if (findUser == null) {
             return save(user, rol);
         }
-        findUser.setUserName(user.getUserName());
+        findUser.setUsername(user.getUsername());
         findUser.setPassword(user.getPassword());
         
         if (findUser.getRoles() == null) {

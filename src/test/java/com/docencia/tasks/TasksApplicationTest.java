@@ -32,8 +32,8 @@ class TasksApplicationTest {
         assertThat(adminRole).isPresent();
         assertThat(userRole).isPresent();
 
-        Optional<UserJpaEntity> adminUser = userRepo.findByUserName("admin");
-        Optional<UserJpaEntity> normalUser = userRepo.findByUserName("user");
+        Optional<UserJpaEntity> adminUser = userRepo.findByUsername("admin");
+        Optional<UserJpaEntity> normalUser = userRepo.findByUsername("user");
 
         assertThat(adminUser).isPresent();
         assertThat(normalUser).isPresent();

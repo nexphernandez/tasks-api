@@ -37,14 +37,14 @@ class JpaUserDetailsServiceTest {
     void loadUserByUsername_existingUser_shouldReturnUserDetails() {
         // Preparar datos
         UserJpaEntity user = new UserJpaEntity();
-        user.setUserName("nico");
+        user.setUsername("nico");
         user.setPassword("hashed-pass");
 
         RolJpaEntity rol = new RolJpaEntity();
         rol.setRol("USER");
         user.setRoles(new HashSet<>(Collections.singletonList(rol)));
 
-        when(userRepo.findByUserName("nico")).thenReturn(Optional.of(user));
+        when(userRepo.findByUsername("nico")).thenReturn(Optional.of(user));
 
         
         UserDetails userDetails = service.loadUserByUsername("nico");
@@ -59,7 +59,7 @@ class JpaUserDetailsServiceTest {
 
     @Test
     void loadUserByUsername_nonExistingUser_shouldThrowException() {
-        when(userRepo.findByUserName("unknown")).thenReturn(Optional.empty());
+        when(userRepo.findByUsername("unknown")).thenReturn(Optional.empty());
 
         assertThrows(UsernameNotFoundException.class,
                 () -> service.loadUserByUsername("unknown"));

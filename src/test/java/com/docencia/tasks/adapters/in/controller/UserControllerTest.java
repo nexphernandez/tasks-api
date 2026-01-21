@@ -81,7 +81,7 @@ class UserControllerTest {
     @Test
     void create_shouldReturnCreated() {
         UserRequest request = new UserRequest();
-        request.setUserName("nico");
+        request.setUsername("nico");
         request.setPassword("pass");
 
         User user = new User(null, "nico", "pass", null);
@@ -103,7 +103,7 @@ class UserControllerTest {
     @Test
     void update_existingUser_shouldReturnOk() {
         UserRequest request = new UserRequest();
-        request.setUserName("newName");
+        request.setUsername("newName");
         request.setPassword("newPass");
 
         User patched = new User(null, "newName", "newPass", null);
@@ -124,7 +124,7 @@ class UserControllerTest {
     @Test
     void update_nonExistingUser_shouldReturnNotFound() {
         UserRequest request = new UserRequest();
-        request.setUserName("newName");
+        request.setUsername("newName");
         request.setPassword("newPass");
 
         when(service.update(eq(1L), any(User.class), eq("USER"))).thenReturn(Optional.empty());

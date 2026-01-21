@@ -38,17 +38,17 @@ public class TasksApplication {
 
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-            userRepo.findByUserName("admin").orElseGet(() -> {
+            userRepo.findByUsername("admin").orElseGet(() -> {
                 UserJpaEntity admin = new UserJpaEntity();
-                admin.setUserName("admin");
+                admin.setUsername("admin");
                 admin.setPassword(encoder.encode("admin123"));
                 admin.getRoles().add(adminRole);
                 return userRepo.save(admin);
             });
 
-            userRepo.findByUserName("user").orElseGet(() -> {
+            userRepo.findByUsername("user").orElseGet(() -> {
                 UserJpaEntity user = new UserJpaEntity();
-                user.setUserName("user");
+                user.setUsername("user");
                 user.setPassword(encoder.encode("user123"));
                 user.getRoles().add(userRole);
                 return userRepo.save(user);

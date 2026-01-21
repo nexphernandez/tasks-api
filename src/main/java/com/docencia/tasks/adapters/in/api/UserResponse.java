@@ -6,7 +6,7 @@ import java.util.Objects;
  */
 public class UserResponse {
     private Long id;
-    private String userName;
+    private String username;
     private String password;
 
     /**
@@ -26,21 +26,21 @@ public class UserResponse {
     /**
      * Constructor con los atributos de la clase
      * @param id identificador del usuario
-     * @param userName nombre de usuario
+     * @param username nombre de usuario
      * @param password contrasenia del usuario
      */
-    public UserResponse(Long id,String userName, String password) {
+    public UserResponse(Long id,String username, String password) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

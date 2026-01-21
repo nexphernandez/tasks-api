@@ -28,7 +28,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserJpaEntity user = userRepo.findByUserName(username)
+        UserJpaEntity user = userRepo.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         // Convertimos nuestros roles a GrantedAuthority
@@ -38,7 +38,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 
         // Devolvemos un UserDetails que Spring Security puede usar
         return new org.springframework.security.core.userdetails.User(
-                user.getUserName(),
+                user.getUsername(),
                 user.getPassword(),
                 authorities
         );

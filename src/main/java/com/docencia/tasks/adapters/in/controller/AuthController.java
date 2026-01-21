@@ -4,20 +4,24 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.docencia.tasks.adapters.in.api.UserRequest;
 import com.docencia.tasks.infrastructure.security.AuthService;
 import com.docencia.tasks.infrastructure.security.JwtService;
+
 /**
  * @author nexphernandez
  * @version 1.0.0
  */
 @RestController
 @RequestMapping("/api/v1/auth")
+@CrossOrigin
 public class AuthController {
 
     private final AuthService authService;
@@ -29,9 +33,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<?> login(@RequestBody UserRequest user) {
         try {
-            String token = authService.login(username, password);
+            String token = authService.login(user.getUsername(), user.getPassword());
             System.out.println("Roles en el token: " + jwtService.extractRoles(token));
             return ResponseEntity.ok(Map.of("token", token));
         } catch (RuntimeException ex) {

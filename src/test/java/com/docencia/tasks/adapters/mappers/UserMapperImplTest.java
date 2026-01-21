@@ -24,12 +24,12 @@ class UserMapperImplTest {
     @Test
     void toDomain_fromRequest_shouldMapAllFields() {
         UserRequest request = new UserRequest();
-        request.setUserName("nico");
+        request.setUsername("nico");
         request.setPassword("1234");
 
         User user = mapper.toDomain(request);
 
-        assertEquals("nico", user.getUserName());
+        assertEquals("nico", user.getUsername());
         assertEquals("1234", user.getPassword());
     }
 
@@ -44,13 +44,13 @@ class UserMapperImplTest {
     void toResponse_fromUser_shouldMapAllFields() {
         User user = new User();
         user.setId(1L);
-        user.setUserName("nico");
+        user.setUsername("nico");
         user.setPassword("1234");
 
         UserResponse response = mapper.toResponse(user);
 
         assertEquals(1L, response.getId());
-        assertEquals("nico", response.getUserName());
+        assertEquals("nico", response.getUsername());
         assertEquals("1234", response.getPassword());
     }
 
@@ -65,13 +65,13 @@ class UserMapperImplTest {
     void toJpa_fromUser_shouldMapAllFields() {
         User user = new User();
         user.setId(1L);
-        user.setUserName("nico");
+        user.setUsername("nico");
         user.setPassword("1234");
 
         UserJpaEntity entity = mapper.toJpa(user);
 
         assertEquals(1L, entity.getId());
-        assertEquals("nico", entity.getUserName());
+        assertEquals("nico", entity.getUsername());
         assertEquals("1234", entity.getPassword());
     }
 
@@ -86,13 +86,13 @@ class UserMapperImplTest {
     void toDomain_fromJpaEntity_shouldMapAllFields() {
         UserJpaEntity entity = new UserJpaEntity();
         entity.setId(1L);
-        entity.setUserName("nico");
+        entity.setUsername("nico");
         entity.setPassword("1234");
 
         User user = mapper.toDomain(entity);
 
         assertEquals(1L, user.getId());
-        assertEquals("nico", user.getUserName());
+        assertEquals("nico", user.getUsername());
         assertEquals("1234", user.getPassword());
     }
 
@@ -106,22 +106,22 @@ class UserMapperImplTest {
     @Test
     void updateDomainFromRequest_shouldUpdateUserName() {
         User user = new User();
-        user.setUserName("original");
+        user.setUsername("original");
         user.setPassword("originalPass");
 
         UserRequest request = new UserRequest();
-        request.setUserName("nuevoNombre");
+        request.setUsername("nuevoNombre");
 
         mapper.updateDomainFromRequest(request, user);
 
-        assertEquals("nuevoNombre", user.getUserName());
+        assertEquals("nuevoNombre", user.getUsername());
         assertEquals("originalPass", user.getPassword());
     }
 
     @Test
     void updateDomainFromRequest_shouldUpdatePassword() {
         User user = new User();
-        user.setUserName("original");
+        user.setUsername("original");
         user.setPassword("originalPass");
 
         UserRequest request = new UserRequest();
@@ -129,33 +129,33 @@ class UserMapperImplTest {
 
         mapper.updateDomainFromRequest(request, user);
 
-        assertEquals("original", user.getUserName());
+        assertEquals("original", user.getUsername());
         assertEquals("nuevoPass", user.getPassword());
     }
 
     @Test
     void updateDomainFromRequest_shouldNotChangeWhenNull() {
         User user = new User();
-        user.setUserName("original");
+        user.setUsername("original");
         user.setPassword("originalPass");
 
         UserRequest request = new UserRequest(); // ambos null
 
         mapper.updateDomainFromRequest(request, user);
 
-        assertEquals("original", user.getUserName());
+        assertEquals("original", user.getUsername());
         assertEquals("originalPass", user.getPassword());
     }
 
     @Test
     void updateDomainFromRequest_nullRequest_shouldDoNothing() {
         User user = new User();
-        user.setUserName("original");
+        user.setUsername("original");
         user.setPassword("originalPass");
 
         mapper.updateDomainFromRequest(null, user);
 
-        assertEquals("original", user.getUserName());
+        assertEquals("original", user.getUsername());
         assertEquals("originalPass", user.getPassword());
     }
 }

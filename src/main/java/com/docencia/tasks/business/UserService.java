@@ -46,8 +46,8 @@ public class UserService implements IUserService {
     @Override
     public Optional<User> update(Long id, User patch, String rol) {
         return repo.getById(id).map(existing -> {
-            if (patch.getUserName() != null) {
-                existing.setUserName(patch.getUserName());
+            if (patch.getUsername() != null) {
+                existing.setUsername(patch.getUsername());
             }
             if (patch.getPassword() != null) {
                 existing.setPassword(patch.getPassword());

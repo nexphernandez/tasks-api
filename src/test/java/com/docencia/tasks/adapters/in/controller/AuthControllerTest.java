@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.docencia.tasks.adapters.in.api.UserRequest;
 import com.docencia.tasks.infrastructure.security.AuthService;
 import com.docencia.tasks.infrastructure.security.JwtService;
 
@@ -38,12 +39,14 @@ class AuthControllerTest {
         String username = "user";
         String password = "pass";
         String fakeToken = "fake.jwt.token";
+        UserRequest user = new UserRequest(username, password);
     
         when(authService.login(username, password)).thenReturn(fakeToken);
         when(jwtService.extractRoles(fakeToken)).thenReturn(List.of("ROLE_USER")); // <- CORREGIDO
     
+
         // Act
-        ResponseEntity<?> response = authController.login(username, password);
+        ResponseEntity<?> response = authController.login(user);
     
         // Assert
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -57,12 +60,14 @@ class AuthControllerTest {
     void login_withInvalidCredentials_shouldThrowUnauthorized() {
         String username = "user";
         String password = "wrongpass";
+        UserRequest user = new UserRequest(username, password);
+
 
         when(authService.login(anyString(), anyString()))
                 .thenThrow(new RuntimeException("Invalid credentials"));
 
         try {
-            authController.login(username, password);
+            authController.login(user);
         } catch (ResponseStatusException ex) {
             assertThat(ex.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
             assertThat(ex.getReason()).isEqualTo("Invalid credentials");

@@ -41,11 +41,11 @@ class UserServiceTest {
     void createUser_ok() {
         User input = new User();
         input.setId(10L);
-        input.setUserName("nico");
+        input.setUsername("nico");
 
         User saved = new User();
         saved.setId(1L);
-        saved.setUserName("nico");
+        saved.setUsername("nico");
 
         when(repo.save(any(User.class), eq("USER"))).thenReturn(saved);
 
@@ -92,11 +92,11 @@ class UserServiceTest {
     void updateUser_allFieldsUpdated() {
         User existing = new User();
         existing.setId(1L);
-        existing.setUserName("old");
+        existing.setUsername("old");
         existing.setPassword("oldPass");
 
         User patch = new User();
-        patch.setUserName("new");
+        patch.setUsername("new");
         patch.setPassword("newPass");
 
         when(repo.getById(1L)).thenReturn(Optional.of(existing));
@@ -105,7 +105,7 @@ class UserServiceTest {
         Optional<User> result = service.update(1L, patch, "ADMIN");
 
         assertTrue(result.isPresent());
-        assertEquals("new", result.get().getUserName());
+        assertEquals("new", result.get().getUsername());
         assertEquals("newPass", result.get().getPassword());
         verify(repo).save(existing, "ADMIN");
     }
@@ -113,11 +113,11 @@ class UserServiceTest {
     @Test
     void updateUser_onlyUsernameUpdated() {
         User existing = new User();
-        existing.setUserName("old");
+        existing.setUsername("old");
         existing.setPassword("oldPass");
 
         User patch = new User();
-        patch.setUserName("new");
+        patch.setUsername("new");
 
         when(repo.getById(1L)).thenReturn(Optional.of(existing));
         when(repo.save(any(User.class), anyString())).thenReturn(existing);
@@ -125,7 +125,7 @@ class UserServiceTest {
         Optional<User> result = service.update(1L, patch, "USER");
 
         assertTrue(result.isPresent());
-        assertEquals("new", existing.getUserName());
+        assertEquals("new", existing.getUsername());
         assertEquals("oldPass", existing.getPassword());
     }
 
@@ -141,7 +141,7 @@ class UserServiceTest {
     @Test
     void update_doesNotUpdateUsername_whenPatchUsernameIsNull() {
         User existing = new User();
-        existing.setUserName("old");
+        existing.setUsername("old");
     
         User patch = new User();
     
@@ -151,7 +151,7 @@ class UserServiceTest {
     
         service.update(1L, patch, "USER");
     
-        assertEquals("old", existing.getUserName());
+        assertEquals("old", existing.getUsername());
     }
 
     @Test
